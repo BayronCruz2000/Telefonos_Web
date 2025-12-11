@@ -35,15 +35,15 @@ class Telefonos
 
         try {
             $sql = "SELECT 
-                        productId AS id, 
-                        productName AS nombre, 
-                        productDescription AS descripcion, 
-                        productPrice AS precio, 
-                        productImgUrl AS imagen, 
-                        productStock AS disponibilidad 
-                    FROM products 
-                    WHERE productStatus = 'ACT' 
-                    ORDER BY productId ASC";
+                    productId AS id, 
+                    productName AS nombre, 
+                    productDescription AS descripcion, 
+                    productPrice AS precio, 
+                    COALESCE(productImgUrl, productImage) AS imagen, 
+                    productStock AS disponibilidad 
+                FROM products 
+                WHERE productStatus = 'ACT' 
+                ORDER BY productId ASC";
 
             $stmt = $this->conexion->prepare($sql);
             $stmt->execute();

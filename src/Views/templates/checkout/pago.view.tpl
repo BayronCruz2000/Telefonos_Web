@@ -1,6 +1,7 @@
 <style>
     /* --- Estilos Generales --- */
     .cart-wrapper {
+        align-content: center;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: #354f52;
         padding: 40px 20px;
@@ -8,6 +9,7 @@
     }
 
     .cart-container {
+        align-items: center;
         max-width: 1100px;
         margin: 0 auto;
         display: grid;
@@ -148,67 +150,109 @@
         .product-info { flex-direction: column; }
     }
 </style>
+<style>
+    /* Estilos para los botones de acción */
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+    }
+    
+    .btn-action {
+        display: inline-block;
+        background-color: #2f3e46;
+        color: #cad2c5;
+        text-align: center;
+        padding: 12px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1rem;
+        border: 2px solid #0070ba;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 1;
+        min-width: 200px;
+        max-width: 300px;
+    }
+    
+    .btn-action:hover {
+        background-color: #0070ba;
+        color: #cad2c5;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 112, 186, 0.3);
+    }
+    
+    .btn-danger {
+        border-color: #cad2c5;
+        background-color: #2f3e46;
+    }
+    
+    .btn-danger:hover {
+        background-color: #0070ba;
+        border-color: #005ea6;
+    }
+    
+    .btn-back {
+        border-color: #cad2c5;
+        background-color: #2f3e46;
+    }
+    
+    .btn-back:hover {
+        background-color: #0070ba;
+        border-color: #005ea6;
+    }
+</style>
 
 <div class="cart-wrapper">
     <div class="cart-container">
-        
-        <section class="cart-items">
-            <h1>&#9734; Carrito &#9734;</h1>
-
-            {{if hasItems}}
-                <div class="cart-header">
-                    <div>Producto</div>
-                    <div style="text-align:center;">Cantidad</div>
-                    <div style="text-align:right;">Precio</div>
-                    <div style="text-align:right;">Total</div>
-                </div>
-
-                {{foreach items}}
-                <div class="cart-item">
-                    <div class="product-info">
-                        <img src="{{productImgUrl}}" alt="{{productName}}">
-                        <div class="product-details">
-                            <h3>{{productName}}</h3>
-                            <form action="index.php?page=Checkout_Cart" method="post">
-                                <input type="hidden" name="action" value="delete">
-                                <input type="hidden" name="productId" value="{{productid}}">
-                                <button type="submit" class="btn-delete">Eliminar lote</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div style="text-align:center;">
-                        <span style="background:#cad2c5; padding: 5px 12px; border-radius:15px;">
-                            x {{crrctd}}
-                        </span>
-                    </div>
-
-                    <div class="price" style="text-align:right;">
-                        L. {{crrprc}}
-                    </div>
-
-                    <div class="total" style="text-align:right;">
-                        L. {{total}}
-                    </div>
-                </div>
-                {{endfor items}}
-
-                <form action="index.php?page=Checkout_Pago" method="post">
-                <button type="submit" class="btn-checkout">
-                    Pagar
-                </button>
-                </form>
-
-
-            {{endif hasItems}}
-
-            {{ifnot hasItems}}
-                <div class="empty-cart">
-                    <h2>Tu carrito está vacío 😔</h2>
-                    <p>¡Corre a ver nuestros teléfonos!</p>
-                    <a href="http://localhost/NW202503MVC-MAIN/index.php?page=Sec_Login" style="color: #cad2c5; text-decoration: underline;">Salir</a>
-                </div>
-            {{endifnot hasItems}}
-        </section>
+        <h1>&#8584; PAGO &#8584;</h1>
+<div class="action-buttons" style="display: grid; grid-template-columns: 1fr 1fr;">
+    <a href="http://localhost/NW202503MVC-MAIN/index.php?page=Sec_Login" 
+       class="btn-action btn-danger" style="color: #cad2c5; justify-self: start;">
+       Salir del Sitio
+    </a>
+    <a href="http://localhost/NW202503MVC-MAIN/index.php?page=Checkout_Cart" 
+       class="btn-action btn-back" style="color: #cad2c5; justify-self: end;">
+       Volver al Carrito
+    </a>
 </div>
+
+        {{if hasItems}}
+        <aside class="order-summary">
+            <h2>Resumen</h2>
+            
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>L. {{cartTotal}}</span>
+            </div>
+            <div class="summary-row">
+                <span>Envío</span>
+                <span style="color: #0070ba;">Gratis</span>
+            </div>
+            <div class="summary-row">
+                <span>Impuestos</span>
+                <span>Incluidos</span>
+            </div>
+
+            <div class="summary-total">
+                <span>Total a Pagar</span>
+                <span>L. {{cartTotal}}</span>
+            </div>
+
+            <form action="index.php?page=Checkout_Checkout" method="post">
+                <button type="submit" class="btn-checkout">
+                    Pagar con PayPal
+                </button>
+            </form>
+
+            <div style="margin-top: 15px; text-align: center; font-size: 0.8rem; color: #2f3e46;">
+                🔒 Pago 100% Seguro con SSL
+            </div>
+        </aside>
+        {{endif hasItems}}
+    </div>
+</div>
+
 

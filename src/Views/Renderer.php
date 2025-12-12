@@ -26,10 +26,10 @@ class Renderer
     /**
      * Renderiza el documento html con los datos enviados
      *
-     * @param string  $vista      Archivo de la Vista
-     * @param array   $datos      Datos a usar en la Vista
-     * @param string  $layoutFile Master Page
-     * @param boolean $render     Determina si renderiza o Devuelve la Cadena
+     * @param string  
+     * @param array   
+     * @param string  
+     * @param boolean 
      *
      * @return void|string
      */
@@ -44,12 +44,12 @@ class Renderer
             die("Error de renderizador: datos no es un arreglo");
         }
 
-        //union de los dos arreglos
+        
         $global_context = \Utilities\Context::getContext();
         if (is_array($global_context)) {
             $datos = array_merge($global_context, $datos);
         }
-        //union de variables de sessión
+       
         $datos = array_merge($_SESSION, $datos);
         if (isset($datos["layoutFile"]) && $layoutFile === "layout.view.tpl") {
             $layoutFile = $datos["layoutFile"];
@@ -70,11 +70,11 @@ class Renderer
                     $tmphtml,
                     $htmlContent
                 );
-                //Cargar Otras plantillas
+                
                 if(strpos($htmlContent, "{{include")){
                     $htmlContent = self::loadPartials($htmlContent);
                 }
-                //Limpiar Saltos de Pagina
+                
                 if (strpos($htmlContent, "<pre>")) {
                 } else {
                     $htmlContent = str_replace("\n", "", $htmlContent);
@@ -82,7 +82,7 @@ class Renderer
                     $htmlContent = str_replace("\t", "", $htmlContent);
                     $htmlContent = str_replace("  ", "", $htmlContent);
                 }
-                //obtiene un arreglo separando lo distintos tipos de nodos
+                
                 $template_code = self::_parseTemplate($htmlContent);
                 $htmlResult = self::_renderTemplate($template_code, $datos);
 
@@ -100,12 +100,12 @@ class Renderer
     }
 
     /**
-     * Renderiza los bloques de Plantillas
      *
-     * @param array $template_block Bloque de Plantillas a procesar
-     * @param array $context        Variables en Contexto Immediato
-     * @param array $parent         Variables en Contexto Padre
-     * @param array $root           Variables en Contexto Raiz
+     *
+     * @param array 
+     * @param array 
+     * @param array 
+     * @param array 
      *
      * @return string
      */
@@ -133,7 +133,7 @@ class Renderer
         }
 
         foreach ($template_block as $node) {
-            //buscando si es un cierre de with
+            
             if (strpos($node, "{{endwith $currentContext}}") !== false) {
                 if ($withIsOpen) {
                     $withIsOpen = false;
@@ -156,7 +156,7 @@ class Renderer
                     continue;
                 }
             }
-            //buscando si es un cierre de foreach
+            
             if (strpos($node, "{{endfor $currentContext}}") !== false) {
                 if ($foreachIsOpen) {
                     $foreachIsOpen = false;
@@ -199,7 +199,7 @@ class Renderer
                 }
             }
 
-            //buscando si es un cierre de if
+            
             if (strpos($node, "{{endifnot $currentContext}}") !== false) {
                 if ($ifNotIsOpen) {
                     $ifNotIsOpen = false;
@@ -239,7 +239,7 @@ class Renderer
                 continue;
             }
 
-            //buscando si es una apertura de with
+            
             if (strpos($node, "{{with") !== false) {
                 if (!$withIsOpen) {
                     $withIsOpen = true;
@@ -250,7 +250,7 @@ class Renderer
                 }
             }
 
-            //buscando si es una apertura de foreach
+            
             if (strpos($node, "{{foreach") !== false) {
                 if (!$foreachIsOpen) {
                     $foreachIsOpen = true;
@@ -260,7 +260,7 @@ class Renderer
                     continue;
                 }
             }
-            //buscando si es un if
+            
             if (strpos($node, "{{ifnot")  !== false) {
                 if (!$ifNotIsOpen) {
                     $ifNotIsOpen = true;
@@ -313,7 +313,7 @@ class Renderer
                 }
             }
 
-            //remplazando las variables del nodo
+         
             $nodeReplace = preg_split(
                 "/(\{\{[&,~]?\w*\}\})/",
                 $node,
@@ -353,9 +353,9 @@ class Renderer
         return $renderedHTML;
     }
     /**
-     * Obtiene los Macro Bloques de Plantillas
+     * 
      *
-     * @param string $htmlTemplate Plantilla a Analizar
+     * @param string 
      *
      * @return array
      */
@@ -374,7 +374,7 @@ class Renderer
 
         $tag_regexp = "/" . join("|", $regexp_array) . "/";
 
-        //split the code with the tags regexp
+        
         $template_code = preg_split(
             $tag_regexp,
             $htmlTemplate,
@@ -393,7 +393,7 @@ class Renderer
 
         $tag_regexp = "/" . join("|", $regexp_array) . "/";
 
-        //split the code with the tags regexp
+        
         $template_code = preg_split(
             $tag_regexp,
             $htmlTemplate,
@@ -428,7 +428,7 @@ class Renderer
 
         $tag_regexp = "/" . join("|", $regexp_array) . "/";
 
-        //split the code with the tags regexp
+        
         $template_code = preg_split(
             $tag_regexp,
             $htmlTemplate,
@@ -458,9 +458,7 @@ class Renderer
         }
         return $htmlBuffer;
     }
-    /**
-     * Constructor privado evita instancia de esta clase
-     */
+    
     private function __construct()
     {
 

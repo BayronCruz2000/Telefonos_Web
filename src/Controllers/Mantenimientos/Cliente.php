@@ -38,16 +38,7 @@ class Cliente extends PrivateController
     private string $validationToken = '';
 
     private array $errores = [];
-    /*
-    X 1) Determinar como se llama este controlador (Modo). INS UPD DSP DEL
-    X 2) Obtener el registro de la Modelo de Datos
-    X 3) Si es un postback. Capturar los datos del formulario
-    X 3.1 ) Validar los datos del formulario
-    3.2 ) Aplicar el método segun el modo de la acción en la DB
-    3.3 ) Enviar devuelta con mensaje a la lista
-    X 4) Preparar la data para la vista
-    X 5) Renderizar la vista
-    */
+    
 
     public function run(): void
     {
@@ -59,7 +50,7 @@ class Cliente extends PrivateController
                     try {
                         switch ($this->mode) {
                             case "INS":
-                                //Llamar a Dao para Ingresar
+                                
                                 $affectedRows = DAOClientes::crearCliente(
                                     $this->codigo,
                                     $this->nombre,
@@ -74,7 +65,7 @@ class Cliente extends PrivateController
                                 }
                                 break;
                             case "UPD":
-                                //Llamar a Dao para Actualizar
+                                
                                 $affectedRows = DAOClientes::actualizarCliente(
                                     $this->codigo,
                                     $this->nombre,
@@ -89,7 +80,7 @@ class Cliente extends PrivateController
                                 }
                                 break;
                             case "DEL":
-                                //Llamar a Dao para Eliminar
+                                
                                 $affectedRows = DAOClientes::eliminarCliente(
                                     $this->codigo
                                 );
@@ -124,7 +115,7 @@ class Cliente extends PrivateController
                 } else {
                     throw new Exception("Código no es Válido");
                 }
-                // Extraer datos de la DB
+               
                 $tmpCliente = DAOClientes::obtenerClientePorCodigo($tmpCodigo);
                 if (count($tmpCliente) === 0) {
                     throw new Exception("No se encontró Registro");
@@ -174,7 +165,7 @@ class Cliente extends PrivateController
         $this->estado = $_POST["estado"] ?? 'ACT';
         $this->evaluacion = intval($_POST["evaluacion"] ?? '');
 
-        // Validaciones
+        
         if (Validators::IsEmpty($this->nombre)) {
             $errors[] = "Nombre no puede ir vacio.";
         }

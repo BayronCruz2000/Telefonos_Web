@@ -1,7 +1,6 @@
 <?php
 /**
- * PHP Version 7.2
- *
+
  * @category Public
  * @package  Controllers
  * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
@@ -12,8 +11,6 @@
 namespace Controllers;
 
 /**
- * Index Controller
- *
  * @category Public
  * @package  Controllers
  * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
@@ -23,8 +20,6 @@ namespace Controllers;
 class Index extends PublicController
 {
     /**
-     * Index run method
-     *
      * @return void
      */
     public function run() :void

@@ -1,7 +1,5 @@
 <?php
 /**
- * PHP Version 7.2
- *
  * @category Private
  * @package  Controllers
  * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
@@ -12,8 +10,6 @@
 namespace Controllers;
 
 /**
- * Private Access Controller Base Class
- *
  * @category Public
  * @package  Controllers
  * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>

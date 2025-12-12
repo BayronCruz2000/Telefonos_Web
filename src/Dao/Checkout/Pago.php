@@ -6,10 +6,9 @@ use Dao\Table;
 class Pago extends Table
 {
     /**
-     * Crear una nueva transacción de pago
-     * @param string $usercod ID del usuario
-     * @param float $total Monto total
-     * @return int|false ID de la transacción o false en error
+     * @param string 
+     * @param float 
+     * @return int|false 
      */
     public static function createTransaction($usercod, $total)
     {
@@ -40,9 +39,8 @@ class Pago extends Table
     }
     
     /**
-     * Completar la orden moviendo items del carrito a órdenes
-     * @param string $usercod ID del usuario
-     * @param string $transactionId ID de la transacción
+     * @param string 
+     * @param string 
      * @return bool
      */
     public static function completeOrder($usercod, $transactionId)
@@ -89,8 +87,7 @@ class Pago extends Table
     }
     
     /**
-     * Obtener historial de transacciones del usuario
-     * @param string $usercod ID del usuario
+     * @param string 
      * @return array
      */
     public static function getTransactionHistory($usercod)
@@ -104,8 +101,7 @@ class Pago extends Table
     }
     
     /**
-     * Obtener detalles de una transacción específica
-     * @param string $transactionId ID de la transacción
+     * @param string 
      * @return array
      */
     public static function getTransactionDetails($transactionId)
@@ -119,8 +115,7 @@ class Pago extends Table
     }
     
     /**
-     * Verificar si una transacción existe y su estado
-     * @param string $transactionId ID de la transacción
+     * @param string 
      * @return array|false
      */
     public static function verifyTransaction($transactionId)
@@ -130,9 +125,8 @@ class Pago extends Table
     }
     
     /**
-     * Actualizar stock del producto después de una compra
-     * @param int $productId ID del producto
-     * @param int $quantity Cantidad vendida
+     * @param int 
+     * @param int 
      * @return bool
      */
     private static function updateProductStock($productId, $quantity)

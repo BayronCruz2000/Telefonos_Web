@@ -9,7 +9,7 @@ class Cart extends \Dao\Table
         $sqlAllProductosActivos = "SELECT * from products where productStatus in ('ACT');";
         $productosDisponibles = self::obtenerRegistros($sqlAllProductosActivos, array());
 
-        //Sacar el stock de productos con carretilla autorizada
+        
         $deltaAutorizada = \Utilities\Cart\CartFns::getAuthTimeDelta();
         $sqlCarretillaAutorizada = "select productId, sum(crrctd) as reserved
             from carretilla where TIME_TO_SEC(TIMEDIFF(now(), crrfching)) <= :delta
@@ -18,7 +18,7 @@ class Cart extends \Dao\Table
             $sqlCarretillaAutorizada,
             array("delta" => $deltaAutorizada)
         );
-        //Sacar el stock de productos con carretilla no autorizada
+
         $deltaNAutorizada = \Utilities\Cart\CartFns::getUnAuthTimeDelta();
         $sqlCarretillaNAutorizada = "select productId, sum(crrctd) as reserved
             from carretillaanom where TIME_TO_SEC(TIMEDIFF(now(), crrfching)) <= :delta
@@ -54,7 +54,7 @@ class Cart extends \Dao\Table
         $sqlAllProductosActivos = "SELECT * from products where productStatus in ('ACT') and productId=:productId;";
         $productosDisponibles = self::obtenerRegistros($sqlAllProductosActivos, array("productId" => $productId));
 
-        //Sacar el stock de productos con carretilla autorizada
+        
         $deltaAutorizada = \Utilities\Cart\CartFns::getAuthTimeDelta();
         $sqlCarretillaAutorizada = "select productId, sum(crrctd) as reserved
             from carretilla where productId=:productId and TIME_TO_SEC(TIMEDIFF(now(), crrfching)) <= :delta
@@ -63,7 +63,7 @@ class Cart extends \Dao\Table
             $sqlCarretillaAutorizada,
             array("productId" => $productId, "delta" => $deltaAutorizada)
         );
-        //Sacar el stock de productos con carretilla no autorizada
+        
         $deltaNAutorizada = \Utilities\Cart\CartFns::getUnAuthTimeDelta();
         $sqlCarretillaNAutorizada = "select productId, sum(crrctd) as reserved
             from carretillaanom where productId = :productId and TIME_TO_SEC(TIMEDIFF(now(), crrfching)) <= :delta

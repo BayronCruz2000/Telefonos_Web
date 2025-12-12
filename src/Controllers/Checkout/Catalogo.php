@@ -1,8 +1,5 @@
 <?php
 /**
- * PHP Version 7.2
- * Checkout
- *
  * @category Controller
  * @package  Controllers\Checkout
  * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
@@ -12,14 +9,10 @@
  */
  namespace Controllers\Checkout;
 
-// ---------------------------------------------------------------
-// Sección de imports
-// ---------------------------------------------------------------
+
 use Controllers\PrivateController;
 
 /**
- * Catalogo
- *
  * @category Public
  * @package  Controllers\Checkout;
  * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
@@ -29,13 +22,11 @@ use Controllers\PrivateController;
 class Catalogo extends PrivateController
 {
     /**
-     * Runs the controller
-     *
      * @return void
      */
     public function run():void
     {
-        // code
+        
         $producto = \Dao\Productos::getAll();
         $carretilla = \Dao\Carretilla::getAll(\Utilities\Security::getUserId());
 

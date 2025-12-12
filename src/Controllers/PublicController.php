@@ -1,7 +1,6 @@
 <?php
 /**
- * PHP Version 7.2
- *
+
  * @category Public
  * @package  Controllers
  * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
@@ -12,8 +11,6 @@
 namespace Controllers;
 
 /**
- * Public Access Controller Base Class
- *
  * @category Public
  * @package  Controllers
  * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
@@ -23,9 +20,7 @@ namespace Controllers;
 abstract class PublicController implements IController
 {
     protected $name = "";
-    /**
-     * Public Controller Base Constructor
-     */
+    
     public function __construct()
     {
         $this->name = get_class($this);
@@ -42,8 +37,6 @@ abstract class PublicController implements IController
         }
     }
     /**
-     * Return name of instantiated class
-     *
      * @return string
      */
     public function toString() :string
@@ -51,8 +44,6 @@ abstract class PublicController implements IController
         return $this->name;
     }
     /**
-     * Returns if http method is a post or not
-     *
      * @return bool
      */
     protected function isPostBack()

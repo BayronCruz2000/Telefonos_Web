@@ -5,8 +5,8 @@
   {
 
     /**
-     * @param array $origin  Arreglo de Origen
-     * @param array $destiny Arreglo de Destino
+     * @param array $origin  
+     * @param array $destiny 
      * @return void
      */
     public static function mergeArrayTo(&$origin, &$destiny)
@@ -21,8 +21,8 @@
     }
 
     /**
-     * @param array $origin  Arreglo de Origen
-     * @param array $destiny Arreglo de Destino
+     * @param array $origin  
+     * @param array $destiny 
      * @return void
      */
     public static function mergeFullArrayTo(&$origin, &$destiny)

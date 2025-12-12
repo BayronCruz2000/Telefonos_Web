@@ -13,9 +13,9 @@ class Pago extends Table
      */
     public static function createTransaction($usercod, $total)
     {
-        // Generar ID de transacción único
+       
         $transactionId = "TXN-" . date("YmdHis") . "-" . substr(md5($usercod . time()), 0, 8);
-        $paymentMethod = "PAYPAL"; // Por defecto PayPal, puedes hacerlo dinámico
+        $paymentMethod = "PAYPAL"; 
         
         try {
             $sqlstr = "INSERT INTO transacciones_pago 
@@ -48,7 +48,7 @@ class Pago extends Table
     public static function completeOrder($usercod, $transactionId)
     {
         try {
-            // 1. Obtener items del carrito
+           
             $sqlstr = "SELECT * FROM carretilla_anon WHERE usercod = :usercod";
             $cartItems = self::obtenerRegistros($sqlstr, ["usercod" => $usercod]);
             
@@ -56,7 +56,7 @@ class Pago extends Table
                 return false;
             }
             
-            // 2. Insertar en tabla de órdenes detalle
+         
             foreach ($cartItems as $item) {
                 $sqlDetail = "INSERT INTO ordenes_detalle 
                              (transaction_id, productid, cantidad, precio_unitario, total) 
@@ -71,12 +71,10 @@ class Pago extends Table
                 ];
                 
                 self::executeNonQuery($sqlDetail, $paramsDetail);
-                
-                // 3. Actualizar stock del producto (opcional, dependiendo de tu lógica)
-                // self::updateProductStock($item["productid"], $item["crrctd"]);
+
             }
             
-            // 4. Actualizar estado de la transacción a COMPLETADA
+           
             $sqlUpdate = "UPDATE transacciones_pago SET estado = 'COMPLETADA', fecha_completado = NOW() 
                          WHERE transaction_id = :transaction_id";
             
@@ -139,7 +137,7 @@ class Pago extends Table
      */
     private static function updateProductStock($productId, $quantity)
     {
-        // Solo si tu tabla products tiene la columna productStock
+ 
         $sqlstr = "UPDATE products SET productStock = productStock - :quantity 
                   WHERE productId = :productId AND productStock >= :quantity";
         

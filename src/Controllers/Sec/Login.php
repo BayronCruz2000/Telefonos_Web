@@ -60,7 +60,7 @@ class Login extends \Controllers\PublicController
                                 \Utilities\Context::getContextByKey("redirto")
                             );
                         } else {
-                            \Utilities\Site::redirectTo("http://localhost/NW202503MVC-MAIN/index.php?page=Catalogo_Catalogo");
+                            \Utilities\Site::redirectTo("http://localhost/TELEFONOS_WEB/index.php?page=Catalogo_Catalogo");
                         }
                     }
                 } else {

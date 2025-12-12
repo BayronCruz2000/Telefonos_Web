@@ -209,11 +209,11 @@
     <div class="cart-container">
         <h1>&#8584; PAGO &#8584;</h1>
 <div class="action-buttons" style="display: grid; grid-template-columns: 1fr 1fr;">
-    <a href="http://localhost/NW202503MVC-MAIN/index.php?page=Sec_Login" 
+    <a href="http://localhost/TELEFONOS_WEB/index.php?page=Sec_Login" 
        class="btn-action btn-danger" style="color: #cad2c5; justify-self: start;">
        Salir del Sitio
     </a>
-    <a href="http://localhost/NW202503MVC-MAIN/index.php?page=Checkout_Cart" 
+    <a href="http://localhost/TELEFONOS_WEB/index.php?page=Checkout_Cart" 
        class="btn-action btn-back" style="color: #cad2c5; justify-self: end;">
        Volver al Carrito
     </a>

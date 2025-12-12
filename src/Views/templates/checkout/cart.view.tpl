@@ -206,7 +206,7 @@
                 <div class="empty-cart">
                     <h2>Tu carrito está vacío 😔</h2>
                     <p>¡Corre a ver nuestros teléfonos!</p>
-                    <a href="http://localhost/NW202503MVC-MAIN/index.php?page=Sec_Login" style="color: #cad2c5; text-decoration: underline;">Salir</a>
+                    <a href="http://localhost/TELEFONOS_WEB/index.php?page=Sec_Login" style="color: #cad2c5; text-decoration: underline;">Salir</a>
                 </div>
             {{endifnot hasItems}}
         </section>

@@ -28,8 +28,9 @@
     <h1>{{SITE_TITLE}}</h1>
     <nav id="menu">
       <ul>
-        <li><a href="http://localhost/NW202503MVC-MAIN/index.php?page=Catalogo_Catalogo"><i class="fas fa-home"></i>&nbsp;Catalogo</a></li>
-        <li><a href="http://localhost/NW202503MVC-MAIN/index.php?page=Checkout_Cart"><i class="fas fa-home"></i>&nbsp;Carrito</a></li>
+        <li><a href="http://localhost/TELEFONOS_WEB/index.php?page=Catalogo_Catalogo"><i class="fas fa-home"></i>&nbsp;Catalogo</a></li>
+        <li><a href="http://localhost/TELEFONOS_WEB/index.php?page=Checkout_Cart"><i class="fas fa-home"></i>&nbsp;Carrito</a></li>
+        <li><a href="http://localhost/TELEFONOS_WEB/index.php?page=Transacciones_Historico"><i class="fas fa-home"></i>&nbsp;Transacciones</a></li>
         {{foreach NAVIGATION}}
             <li><a href="{{nav_url}}">{{nav_label}}</a></li>
         {{endfor NAVIGATION}}
